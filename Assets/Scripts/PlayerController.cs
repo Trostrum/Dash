@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 	public float moveSpeed;
 	public CanvasGroup GameEnd;
 	public bool isEnd;
+	public GameObject buttons;
 	
 	public static PlayerController instance;
 	
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
 	    	{
 	    		isEnd = false;
 	    		this.enabled = false;
+	    		buttons.SetActive(true);
 	    	}
 	    }
     }

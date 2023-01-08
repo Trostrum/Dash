@@ -8,7 +8,7 @@ public class DestroyIf : MonoBehaviour
 	// OnCollisionEnter is called when this collider/rigidbody has begun touching another rigidbody/collider.
 	
 	// OnTriggerEnter is called when the Collider other enters the trigger.
-	public Transform player;
+	private Transform player;
 	
 	// Awake is called when the script instance is being loaded.
 	protected void Start()
@@ -27,17 +27,31 @@ public class DestroyIf : MonoBehaviour
 	}
 	protected void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject.CompareTag("Fire"))
+		if(this.gameObject.CompareTag("Blue")|| this.gameObject.CompareTag("Red"))
 		{
-			Destroy(this.gameObject);
+			if(other.gameObject.CompareTag("Fire"))
+			{
+				Destroy(this.gameObject);
+			}
+			if(this.gameObject.CompareTag("Blue") && other.gameObject.CompareTag("Player"))
+			{
+				Destroy(this.gameObject);
+			}
+			if(this.gameObject.CompareTag("Red") && other.gameObject.CompareTag("Player"))
+			{
+				PlayerController.instance.isEnd = true;
+			}		
 		}
-		if(this.gameObject.CompareTag("Blue") && other.gameObject.CompareTag("Player"))
+		if(this.gameObject.CompareTag("Fire"))
 		{
-			Destroy(this.gameObject);
-		}
-		if(this.gameObject.CompareTag("Red") && other.gameObject.CompareTag("Player"))
-		{
-			PlayerController.instance.isEnd = true;
+			if(other.gameObject.CompareTag("Blue")|| other.gameObject.CompareTag("Red"))
+			{
+				Destroy(this.gameObject); // Destroy the Fireball
+			}
 		}
 	}
+	
+	
+	
+		
 }

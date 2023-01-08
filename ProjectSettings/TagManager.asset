@@ -9,6 +9,7 @@ TagManager:
   - Blue
   - Red
   - Fire
+  - Score
   layers:
   - Default
   - TransparentFX
